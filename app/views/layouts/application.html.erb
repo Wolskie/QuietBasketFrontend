@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>QuietBasket</title>
+    <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfvpsm6Yi2L95P5-8DJ4NS8yHj2vymPPc"></script>
+
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+
+</html>
