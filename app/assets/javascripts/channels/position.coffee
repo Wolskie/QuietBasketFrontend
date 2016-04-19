@@ -9,4 +9,4 @@ App.position = App.cable.subscriptions.create "PositionChannel",
 
   received: (data) ->
     json = JSON.parse(data)
-    Application.addDeviceMapMarker(data)
+    Application.addDeviceMapMarker(json)
