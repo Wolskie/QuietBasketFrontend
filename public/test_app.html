@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script>
+
+      var tracking = false;
+
+function getLocation() {
+    if (navigator.geolocation) {
+        var options = {
+          enableHighAccuracy: true,
+          timeout: 5000,
+          maximumAge: 0
+        }
+        navigator.geolocation.getCurrentPosition(showPosition, showPosition, options);
+    } else {
+      alert(":(");
+    }
+}
+
+function showPosition(position) {
+
+    var json = {
+      "position": {
+        "device_id": 1,
+        "latitude": position.coords.latitude,
+        "longitude": position.coords.longitude
+      }
+    }
+
+    $.post('/positions.json', json, function(resp) {
+    }, 'json');
+
+}
+
+$(document).ready(function() {
+  $("#toggleTracker").click(function(){
+    tracking = !tracking;
+    if(tracking) {
+      $("#status").html("Tracking");
+    } else {
+      $("#status").html("Disabled");
+    }
+  })
+});
+
+(function theLoop (i) {
+  setTimeout(function () {
+    if(tracking) {
+      getLocation();
+    }
+    if (--i) {          // If i > 0, keep going
+      theLoop(i);       // Call the loop again, and pass it the current value of i
+    }
+  }, 10000);
+})(10);
+    </script>
+  </head>
+
+  <body>
+    <p>Status: <span id="status">inactive</span></p>
+    <button id="toggleTracker">Toggle Tracking</button>
+  </body>
+</html>
+
