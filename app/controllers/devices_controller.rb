@@ -65,6 +65,7 @@ class DevicesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_device
       @device = Device.find(params[:id])
+      gon.deviceHistory = @device.positions.limit(50)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

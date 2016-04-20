@@ -1,29 +1,36 @@
-<p id="notice"><%= notice %></p>
+<%= javascript_tag do %>
+  Application.selectedDevice = undefined;
+<%end%>
 
-<h1>Devices</h1>
+<div class="ui main text container">
+  <p id="notice"><%= notice %></p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <h1 class="ui header">Tracked Devices</h1>
+  <p>This is a list of all the current devices being tracked by the system.</p>
 
-  <tbody>
-    <% @devices.each do |device| %>
+  <table class="ui celled striped table">
+    <thead>
       <tr>
-        <td><%= device.name %></td>
-        <td><%= device.description %></td>
-        <td><%= link_to 'Show', device %></td>
-        <td><%= link_to 'Edit', edit_device_path(device) %></td>
-        <td><%= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Name</th>
+        <th>Description</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @devices.each do |device| %>
+        <tr>
+          <td><i class="male icon"></i> <%= device.name %></td>
+          <td><%= device.description %></td>
+          <td><i class="zoom icon"></i> <%= link_to 'Track', device  %></td>
+          <td><i class="configure icon"></i> <%= link_to 'Edit', edit_device_path(device) %></td>
+          <td><i class="red remove icon"></i> <%= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Device', new_device_path %>
+  <br>
+
+  <i class="add icon"></i> <%= link_to 'New Device', new_device_path %>
+</div>

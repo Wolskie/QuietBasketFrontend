@@ -2,17 +2,37 @@
 <html>
   <head>
     <title>QuietBasket</title>
+
+    <%= include_gon %>
+
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfvpsm6Yi2L95P5-8DJ4NS8yHj2vymPPc"></script>
 
   </head>
 
   <body>
-    <%= yield %>
+
+ <div class="ui fixed inverted menu">
+    <div class="ui container">
+      <a href="#" class="header item">
+        <img class="logo" src="/logo.png">
+      </a>
+      <%= link_to 'Devices',   devices_path,   class: "item" %>
+      <%= link_to 'Positions', positions_path, class: "item" %>
+      <div class="right menu">
+        <div class="ui item device">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+      <%= yield %>
   </body>
 
 </html>

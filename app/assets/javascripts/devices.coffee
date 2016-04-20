@@ -18,6 +18,23 @@ Application.addDeviceMapMarker = (data) ->
       animation: google.maps.Animation.DROP
     title: "Time: #{data.created_at}")
 
+
+  # Draw a circle of 100 metres around the
+  # marker, to show general innacuracy.
+  #
+  circle = new (google.maps.Circle)(
+    map: Application.deviceMap
+    radius: 100
+    fillColor: '#AA0000')
+
+  # Bind the circle to the marker.
+  #
+  circle.bindTo 'center', marker, 'position'
+
+  # Center the map agains the latest marker
+  #
+  Application.deviceMap.panTo(marker.getPosition())
+
   console.log("lat=#{parseFloat(data.latitude)}")
   console.log("lng=#{parseFloat(data.longitude)}")
   console.log("addMarker() [EXIT]")
@@ -28,14 +45,29 @@ Application.initMap = ->
     center:
       lat: -25.363
       lng: 131.044
-    zoom: 4)
+    zoom: 14)
   console.log("initMap() [EXIT]")
   return
 
+Application.initDeviceHistory = ->
+  console.log("initDeviceHistory() [ENTRY]")
+  for position in gon.deviceHistory
+    do (position) ->
+      Application.addDeviceMapMarker(position)
+  console.log("initDeviceHistory() [EXIT]")
+
 documentReady = ->
   console.log("documentReady() [ENTRY]")
-  Application.initMap()
+
+  # If there is no map element on the page
+  # we dont wan to load the map.
+  #
+  if document.getElementById("map")?
+    console.log("documentReady() Initialize device map")
+    Application.initMap()
+    Application.initDeviceHistory()
+
   console.log("documentReady() [EXIT]")
 
 $(document).ready(documentReady)
-$(document).on('page:load', documentReady)
+$(document).on('turbolinks:load', documentReady)

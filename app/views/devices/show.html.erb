@@ -1,17 +1,6 @@
-<p id="notice"><%= notice %></p>
+<%= javascript_tag do %>
+  Application.selectedDevice = "<%=@device.id %>";
+  $(".ui.item.device").html("<a href='/devices/<%=@device.id%>/edit'><i class='settings icon'></i> <%= @device.name %></a>");
+<%end%>
 
-<p>
-  <strong>Name:</strong>
-  <%= @device.name %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @device.description %>
-</p>
-
-<%= link_to 'Edit', edit_device_path(@device) %> |
-<%= link_to 'Back', devices_path %>
-
-
-<div id="map" style="width: 600px; height: 500px;"></div>
+<div id="map"></div>
