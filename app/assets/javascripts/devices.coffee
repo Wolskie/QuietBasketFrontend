@@ -24,8 +24,9 @@ Application.addDeviceMapMarker = (data) ->
   #
   circle = new (google.maps.Circle)(
     map: Application.deviceMap
-    radius: 100
-    fillColor: '#AA0000')
+    strokeWeight: 0
+    fillOpacity: 0.1 
+    radius: 10)
 
   # Bind the circle to the marker.
   #
@@ -45,7 +46,7 @@ Application.initMap = ->
     center:
       lat: -25.363
       lng: 131.044
-    zoom: 14)
+    zoom: 17)
   console.log("initMap() [EXIT]")
   return
 
