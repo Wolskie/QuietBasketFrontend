@@ -15,3 +15,11 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//
+
+$(document).ready(function() {
+  if ($("#notice").html() !== undefined && $('#notice').html().length > 0) {
+    $('.ui.notice').removeClass('hidden');
+  }
+});
+

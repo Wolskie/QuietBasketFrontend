@@ -1,19 +1,25 @@
-<p id="notice"><%= notice %></p>
+<div class="ui main text container">
+  <div class="ui notice success hidden message">
+    <div class="content">
+      <p id="notice"><%= notice %></p>
+    </div>
+  </div>
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @position.latitude %>
-</p>
+  <p>
+    <strong>Latitude:</strong>
+    <%= @position.latitude %>
+  </p>
 
-<p>
-  <strong>Longitude:</strong>
-  <%= @position.longitude %>
-</p>
+  <p>
+    <strong>Longitude:</strong>
+    <%= @position.longitude %>
+  </p>
 
-<p>
-  <strong>Device:</strong>
-  <%= @position.device %>
-</p>
+  <p>
+    <strong>Device:</strong>
+    <%= @position.device.name %>
+  </p>
 
-<%= link_to 'Edit', edit_position_path(@position) %> |
-<%= link_to 'Back', positions_path %>
+  <%= link_to 'Edit', edit_position_path(@position) %> |
+  <%= link_to 'Back', positions_path %>
+</div>

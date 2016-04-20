@@ -11,22 +11,30 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :latitude %>
-    <%= f.text_field :latitude %>
-  </div>
+  <div class="ui form">
+    <div class="field">
+      <%= f.label :latitude %>
+      <%= f.text_field :latitude %>
+    </div>
 
-  <div class="field">
-    <%= f.label :longitude %>
-    <%= f.text_field :longitude %>
-  </div>
+    <div class="field">
+      <%= f.label :longitude %>
+      <%= f.text_field :longitude %>
+    </div>
 
-  <div class="field">
-    <%= f.label :device_id %>
-    <%= f.text_field :device_id %>
-  </div>
+    <div class="field">
+      <%= f.label :device_id %>
+      <select name="position[device_id]">
+        <% Device.all.each do |device| %>
+          <option value="<%=device.id%>"><%=device.name%></option>
+        <% end %>
+      </select>
+    </div>
 
-  <div class="actions">
-    <%= f.submit %>
+    <div class="actions">
+      <%= button_tag(class: "ui button") do %>
+        <i class="send icon"></i> Submit
+      <%end%>
+    </div>
   </div>
 <% end %>
