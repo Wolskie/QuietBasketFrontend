@@ -9,4 +9,22 @@ App.position = App.cable.subscriptions.create "PositionChannel",
 
   received: (data) ->
     json = JSON.parse(data)
-    Application.addDeviceMapMarker(json)
+
+    console.log("PositionChannel: received: [ENTRY]")
+    console.log("PositionChannel: json=#{data}")
+
+    if gon.deviceSettings.realtimeEnabled == false
+      console.log("PositionChannel: deviceSettings.realtimeEnabled is false, dont care")
+      return
+
+    # If the device is coming in is the one which is
+    # selected.
+    #
+    if json.device_id == Application.selectedDevice
+      console.log("PositionChannel: received: json.device_id matches selected device")
+      Application.addDeviceMapMarker(json)
+    else
+      console.log("PositionChannel: received: Ignoring")
+
+    # Exit
+    console.log("PositionChannel: received: [EXIT]")

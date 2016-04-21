@@ -22,6 +22,27 @@
       <%= f.text_field :description %>
     </div>
 
+    <div class="field">
+      <div class="ui checkbox">
+        <%= f.check_box :enabled %>
+        <%= f.label 'Tracking enabled' %>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="ui checkbox">
+        <%= f.check_box :realtime%>
+        <%= f.label 'Realtime tracking' %>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="ui checkbox">
+        <%= f.check_box :history %>
+        <%= f.label 'Show history' %>
+      </div>
+    </div>
+
     <div class="actions">
       <%= button_tag(class: "ui button") do %>
         <i class="send icon"></i> Submit

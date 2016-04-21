@@ -11,28 +11,34 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
 
+    <link href="https://cdn.datatables.net/1.10.11/css/jquery.dataTables.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfvpsm6Yi2L95P5-8DJ4NS8yHj2vymPPc"></script>
 
   </head>
 
   <body>
 
- <div class="ui fixed inverted menu">
-    <div class="ui container">
-      <a href="#" class="header item">
-        <img class="logo" src="/logo.png">
-      </a>
-      <%= link_to 'Devices',   devices_path,   class: "item" %>
-      <%= link_to 'Positions', positions_path, class: "item" %>
-      <div class="right menu">
-        <div class="ui item device">
+    <div class="ui fixed inverted menu">
+      <div class="ui container">
+        <a href="#" class="header item">
+          <img class="logo" src="/logo.png">
+        </a>
+        <%= link_to devices_path,   class: "item" do %>
+          <i class="home icon"></i> Devices
+        <%end%>
+
+        <%= link_to positions_path, class: "item" do %>
+          <i class="bullseye icon"></i> Positions
+        <%end%>
+
+        <div class="right menu">
+          <div class="ui item device">
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-
-      <%= yield %>
+    <%= yield %>
   </body>
-
 </html>

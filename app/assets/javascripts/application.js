@@ -17,9 +17,25 @@
 //= require_tree .
 //
 
-$(document).ready(function() {
+function readyFunc() {
+
   if ($("#notice").html() !== undefined && $('#notice').html().length > 0) {
     $('.ui.notice').removeClass('hidden');
   }
+
+  $('.ui.table.datatable').DataTable({
+    "paging":    true,
+    "ordering":  false,
+    "info":      false,
+    "filter":    false,
+    "pageLength": 50
+  });
+
+  $('.dataTables_length').hide();
+}
+
+$(document).ready(function() {
+  readyFunc();
 });
+
 

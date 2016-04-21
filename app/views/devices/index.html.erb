@@ -2,7 +2,7 @@
   Application.selectedDevice = undefined;
 <%end%>
 
-<div class="ui main text container">
+<div class="ui main  container">
 
   <div class="ui success hidden message">
     <div class="content">
@@ -18,6 +18,7 @@
       <tr>
         <th>Name</th>
         <th>Description</th>
+        <th>Status</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -27,6 +28,13 @@
         <tr>
           <td><i class="male icon"></i> <%= device.name %></td>
           <td><%= device.description %></td>
+          <td>
+            <% if device.enabled then %>
+              <i class="green checkmark icon"></i> Tracking
+            <%else%>
+              <i class="minus icon"></i> Stopped
+            <%end%>
+          </td>
           <td><i class="zoom icon"></i> <%= link_to 'Track', device  %></td>
           <td><i class="configure icon"></i> <%= link_to 'Edit', edit_device_path(device) %></td>
           <td><i class="red remove icon"></i> <%= link_to 'Destroy', device, method: :delete, data: { confirm: 'Are you sure?' } %></td>

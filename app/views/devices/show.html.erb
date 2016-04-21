@@ -1,6 +1,18 @@
 <%= javascript_tag do %>
-  Application.selectedDevice = "<%=@device.id %>";
-  $(".ui.item.device").html("<a href='/devices/<%=@device.id%>/edit'><i class='settings icon'></i> <%= @device.name %></a>");
+  Application.selectedDevice = <%=@device.id %>;
+
+  $(".ui.item.device").html("<i class='settings icon'></i> <%= @device.name %>");
+
+  $(".ui.item.device").click(function(){
+    $('.small.modal.device.edit').modal('show');
+  });
 <%end%>
 
 <div id="map"></div>
+
+<div class="ui small modal device edit">
+  <div class="header">Editing Device</div>
+  <div class="content">
+      <%= render 'form', device: @device %>
+  </div>
+</div>

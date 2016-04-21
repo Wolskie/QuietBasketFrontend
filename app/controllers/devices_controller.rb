@@ -65,11 +65,18 @@ class DevicesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_device
       @device = Device.find(params[:id])
-      gon.deviceHistory = @device.positions.limit(50)
+
+      # Write this into javascript
+      gon.deviceSettings = {
+        history: @device.positions.last(50),
+        showHistory: @device.history,
+        trackingEnabled: @device.enabled,
+        realtimeEnabled: @device.realtime
+      }
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def device_params
-      params.require(:device).permit(:name, :description)
+      params.require(:device).permit(:name, :description, :enabled, :realtime, :history)
     end
 end

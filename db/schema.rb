@@ -11,13 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160419013800) do
+ActiveRecord::Schema.define(version: 20160421013004) do
 
   create_table "devices", force: :cascade do |t|
     t.string   "name"
     t.string   "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "poll_freq"
+    t.boolean  "realtime"
+    t.boolean  "enabled"
+    t.boolean  "scale"
+    t.boolean  "history"
   end
 
   create_table "positions", force: :cascade do |t|
