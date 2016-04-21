@@ -31,7 +31,6 @@ function readyFunc() {
     "pageLength": 50
   });
 
-  $('.dataTables_length').hide();
 }
 
 $(document).ready(function() {

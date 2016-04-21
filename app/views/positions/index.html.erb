@@ -35,5 +35,7 @@
 
   <br>
 
-  <i class="add icon"></i> <%= link_to 'New Position', new_position_path %>
+  <%= button_to new_position_path, method: "get", class: "ui button" do %>
+    <i class="add icon"></i> New Position
+  <%end%>
 </div>
