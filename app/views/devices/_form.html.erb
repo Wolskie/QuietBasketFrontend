@@ -23,6 +23,11 @@
     </div>
 
     <div class="field">
+      <%= f.label 'Poll frequency (minutes)' %>
+      <%= f.text_field :poll_freq %>
+    </div>
+
+    <div class="field">
       <div class="ui checkbox">
         <%= f.check_box :enabled %>
         <%= f.label 'Tracking enabled' %>
